@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # 'livereload',
+    'livereload',
     'django.contrib.staticfiles',
 
 ]
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'livereload.middleware.LiveReloadScript',
+    'livereload.middleware.LiveReloadScript',
 
 ]
 
@@ -126,8 +126,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+MEDIA_URL='/media/'
 
-STATIC_URL = '/static/'
+STATICFILES_DIRS=[os.path.join(BASE_DIR, 'templates'),
+                  # os.path.join(BASE_DIR, 'static_url'),
+                  os.path.join(BASE_DIR, 'products/templates'),
+                  os.path.join(BASE_DIR, 'accounts/templates'),
+                  
+]
+STATIC_ROOT=os.path.join(BASE_DIR, 'static_root')
+STATIC_URL = '/static_url/'
 # LIVERELOAD_PORT='43233'
 
 # livereload_port='43233'

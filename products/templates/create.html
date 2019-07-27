@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if Error %}
+<br>
+<br>
+<div class="text-center alert alert-danger" role="alert">{{Error}}</div>
+{% endif %}
+
+<div class="row">
+        <div class="col-lg-12 col-md-12">
+                <br>
+                <form method="POST" class="container bg-light rounded p-4 r-10" action="{% url 'create_product' %}" enctype="multipart/form-data"> 
+                        {%csrf_token%}
+                        <h2 class="text-center">Add a new product</h2>
+                        <br>
+                        <div class="row">
+                                <div class="form-group col-lg-6">
+                                        <label for="Name">Title</label>
+                                        <input type="text" class="form-control" id="Name" name='title' required>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                        <label for="url">Website</label>
+                                        <input type="text" class="form-control" id="url" name='url' required>
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                        <label for="body">Body</label>
+                                        <textarea type="textarea" class="form-control" name="body" rows="6"
+                                                required></textarea>
+                                </div>
+                                <!-- <label class="" for="file">Uplaod an Icon</label> -->
+                                
+                                <div class="form-group col-lg-4 mt-3">
+                                        <label for="body">Upload an Icon</label>
+                                        <br>
+                                        <input type="file" class="form-control-file" name="thumbnail" id="thumbnail"/>
+                                        <br><br>
+                                        <label for="body">Upload an Image</label>
+                                        <br>
+                                        <input type="file" class="form-control-file" name="poster" id="poster"/>
+                                </div>
+
+                        </div>
+                        <br>
+                        <input type="submit" name='submit' class="btn btn-secondary shadow mx-auto text-white"
+                                value="Create" style="display:block;"></input>
+                </form>
+        </div>
+</div>
+{%endblock%}

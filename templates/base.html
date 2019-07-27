@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,19 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- <title>Document</title> -->
     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{% static 'input.css' %}">
   </head>
   <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                <div class="container">
-                    <a class="navbar-brand" href="#">Product Hunt</a>
+                    <a class="navbar-brand" href="{%url 'home'%}">Product Hunt</a>
                   <div class="navbar-nav">
                     {% if user.is_authenticated %}
-                    <a class="nav-link" href="#">Add</a>
+                    <a class="nav-link" href="{% url 'create_product' %}">Add</a>
                     <form action="{% url 'logout' %}" Method="POST">{% csrf_token %}
                     <input type="submit" value="Logout" class="nav-link" href="{% url 'logout' %}" style="border: none; background: transparent"></input>
                     </form>
@@ -43,7 +45,7 @@
             <div class="container">
                   <!-- <a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a> -->
                     <!-- <p class="rights text-center"><span>©  </span><s1pan class="copyright-year">{% now 'Y' %}</s1pan><span> </span><span>Manav Shah</span><span>. </span><span>All Rights Reserved.</span></p> -->
-                    <p class="text-black text-center">Stay Happy boiis &spar;  © {% now 'Y' %}</p>
+                    <p class="text-black text-center">Stay Happy boiis ||  © {% now 'Y' %}</p>
     <!-- JS CDNs -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>
+
+    <!-- {{product.title}} -->
+
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-sm-4 bg-light text-right">
+                <img src="{{product.icon.url}}" class="text-right w-100 clear-fix" style="min-height:156px;position: absolute;left:0;object-fit:cover;background-size: cover;" alt="" srcset=""/>
+            </div>
+            <div class="container col-lg-9 col-sm-8 text-center">
+                <a href="https://{{product.url}}" class="text-spacey text-dark text-mono mt-5 card-title display-3" style="line-height:1.25">{{product.title}}</a>
+                <h4 class="text-mono text-secondary ">{{product.pub_date.date}}</h4>
+                    <h5>
+                        <br>  
+                    </h5>   
+            </div>  
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-sm-4 py-5 text-center ">
+                    <form action="{% url 'upvote' product.id %}" Method="POST">{% csrf_token %}
+                            <button href="" type="submit" class="btn btn-secondary w-100 shadow" {{disabled}}>Upvote    <span class="display-6 text-success" style="margin-left:5px;">  {{product.votes_total}}</span></button>
+                    </form>
+                    
+                        <span class="text-muted small">Hunter: <span class="text-success">  {{product.hunter}}</span></span>
+                <!-- </form> -->
+            </div>
+            <div class="container col-lg-9 col-sm-8 p-5 w-50">
+                    <img src="{{product.image.url}}" class="w-100 clear-fix"  alt="" srcset=""/>
+                    <p class="p-2 bg-light text-mono display-6">
+                        <br>  
+                        {{product.body}}
+                        <br>
+                        
+                    </p>
+            </div>  
+        </div>
+        
+            <br>
+            <!-- <img src="{{own_blog.image.url}}" alt="" srcset="" class="w-100" style="height: 50vh"> -->
+        </div>
+</h1>
+{% endblock %}

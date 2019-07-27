@@ -4,5 +4,43 @@
 <br>
 This is the home page...
 <br>
-what are you upto anyway???
+{%for product in products%}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card bg-light rounded-lg">
+                <div class="card-horizontal">
+                    <div class="card-body">
+                        <h4 class="card-title mb-1">{{product.title}} <span class="text-muted small"> by {{product.hunter}} </h4>
+                        <span class="text-muted mb-1">On {{product.pub_date.date}} </span>
+                        <p class="card-text">{{product.summary}}</p>
+                        <!-- <br> -->
+                        <div class="row">
+                        
+
+                        <div class="col-lg-4">
+                                <form class="w-100 inline-form" action="{% url 'upvote' product.id %}" Method="POST">{% csrf_token %}
+                                <button type="submit" class="w-100 btn btn-secondary"> Upvote    <span class="display-6 bold text-success" style="margin-left:5px;">  {{product.votes_total}}</button>
+                                 </form>   
+                                </div>
+
+
+                        <div class="col-lg-4 mr-0 pr-0 text-left">
+                                <a href="{%url 'upvote' product.id%}" class=" btn btn-success">Read more</a>
+                            </div>
+    
+                        </div>
+                         <!-- <br> -->
+                    </div>
+
+                    <div class="img-square-wrapper text-right w-50">
+                            <img class="rounded-lg w-50 hm100" src="{{product.icon.url}}" alt="{{product.title}} thumbnail">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
